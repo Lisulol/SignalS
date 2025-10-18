@@ -10,7 +10,7 @@ export default function Main() {
            <div className="flex left-3 top-2.5 relative flex-col gap-y-50">
 
             <div className="flex items-center">
-              <IconChevronRightPipe className="text-green-950"/><p className="flex text-green-950">Hi for this week i made some quick functions/"games"</p>
+              <IconChevronRightPipe className="text-green-950"/><p className="flex text-green-950">Hi for this week i made some quick functions/&qout;game&qout;"</p>
             </div> 
           <div className="flex  gap-y-10  justify-center flex-col">
           <div className="flex items-center">
