@@ -76,8 +76,8 @@ for(const key in morseCode) {
     ReverseMorseCode[value] = key;
   }
 }
-  let dotaudio = new Audio('./sounds/E_morse_code.ogg')
-  let lineaudio = new Audio('./sounds/T_morse_code.ogg')
+  const dotaudio = new Audio('./sounds/E_morse_code.ogg')
+  const lineaudio = new Audio('./sounds/T_morse_code.ogg')
 
   const [Translation, setTranslation] = useState('');
   const [inputvalue, setInput] = useState('');
