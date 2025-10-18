@@ -1,14 +1,10 @@
 'use client'
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { IconChevronRightPipe } from "@tabler/icons-react";
 import { useState } from "react";
 
 export default function Morse(){
 
-  type Types = {
-    key : string
-  } 
 
 
     // Long section with the morse code alphabet aint nobody want to look at tha
