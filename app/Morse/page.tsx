@@ -1,12 +1,13 @@
 'use client'
 import { Button } from "@/components/ui/button";
 import { IconChevronRightPipe } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Morse(){
 
 
-
+  const dotref = useRef<HTMLAudioElement | null>(null);
+  const lineref = useRef<HTMLAudioElement | null>(null);
     // Long section with the morse code alphabet aint nobody want to look at tha
   const morseCode : Record<string,string> = {
   A: ".-",
@@ -72,8 +73,11 @@ for(const key in morseCode) {
     ReverseMorseCode[value] = key;
   }
 }
-  const dotaudio = new Audio('./sounds/E_morse_code.ogg')
-  const lineaudio = new Audio('./sounds/T_morse_code.ogg')
+useEffect(()=>{
+
+  dotref.current = new Audio('./sounds/E_morse_code.ogg')
+  lineref.current = new Audio('./sounds/T_morse_code.ogg')
+},[])
 
   const [Translation, setTranslation] = useState('');
   const [inputvalue, setInput] = useState('');
@@ -107,11 +111,21 @@ for(const key in morseCode) {
       let delay = 0;
       morsecodes.forEach((char) => {
         if(char === '.'){
-          setTimeout(() => dotaudio.play(), delay);
+          setTimeout(() => {
+            if (dotref.current) {
+              dotref.current.currentTime = 0;
+              dotref.current.play();
+            }
+          }, delay);
           delay += 500;
         }
         else if(char === '-'){
-          setTimeout(() => lineaudio.play(), delay);
+          setTimeout(() => {
+            if (lineref.current) {
+              lineref.current.currentTime = 0;
+              lineref.current.play();
+            }
+          }, delay);
           delay += 800;
         }
         else if(char === ' '){
@@ -132,21 +146,40 @@ for(const key in morseCode) {
         
         
         <div className="flex h-screen w-full items-center justify-center">
-      <div className="flex flex-col h-9/12 w-9/12 bg-[#002208]  border-8 border-black rounded-3xl text-green-950">
-        <div className="flex flex-col gap-y-9 left-3 top-2.5 relative">
+          <div 
+        className="absolute inset-0 pointer-events-none z-50"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.4) 0px,
+            rgba(0, 0, 0, 0.2) 2px,
+            transparent 2px,
+            transparent 4px
+          )`
+        }}
+      ></div>
+        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41] ">
+        <div className="flex flex-col  h-5/6 gap-y-9 left-3 top-2.5 relative">
         <div className='flex items-center'>
-        <IconChevronRightPipe/><p className="text-green-900">Input message to be translated</p>
+        <IconChevronRightPipe/><p className="text-[#00ff41] ">Input message to be translated</p>
 
         </div>
         <div className="flex items-center">
-        <IconChevronRightPipe/><input onChange={handleInputChange} value={inputvalue} className='text-green-900 outline-none'placeholder={'...'}></input>
+        <IconChevronRightPipe/><input onChange={handleInputChange} value={inputvalue} className='text-[#00ff41]  outline-none'placeholder={'...'}></input>
         </div>
         <div className = 'flex items-center'>
-          <IconChevronRightPipe/><p className="text-green-900">{Translation}</p>
+          <IconChevronRightPipe/><p className="text-[#00ff41] ">{Translation}</p>
 
         </div>
-        <div>
-          <Button onClick={handleTranslate}className="bg-[#022208] border-2 border-green-950 text-green-900 border-dashed rounded-none">Translate</Button>
+        <div className="flex items-center">
+           <IconChevronRightPipe/><Button onClick={handleTranslate}className="bg-black border-2 border-[#00ff41]  text-[#00ff41] hover:scale-105 border-dashed rounded-none">Translate</Button>
+        </div>
+        </div>
+        <div className="flex items-center left-3 top-2.5 relative">
+        <div className="flex items-center">
+             <div className="flex items-center">
+          <IconChevronRightPipe className="text-[#00ff41] "/><a href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></a>
+          </div>
         </div>
         </div>
       </div>

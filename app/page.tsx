@@ -6,18 +6,33 @@ export default function Main() {
 
   return(
     <div className="flex h-screen w-full items-center justify-center">
-      <div className="flex flex-col h-9/12 w-9/12 bg-[#002208] border-8 border-black rounded-3xl gap-y-50">
+     <div 
+        className="absolute inset-0 pointer-events-none z-50"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.4) 0px,
+            rgba(0, 0, 0, 0.2) 2px,
+            transparent 2px,
+            transparent 4px
+          )`
+        }}
+      ></div>
+      <div className="flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl gap-y-50">
            <div className="flex left-3 top-2.5 relative flex-col gap-y-50">
 
             <div className="flex items-center">
-              <IconChevronRightPipe className="text-green-950"/><p className="flex text-green-950">Hi for this week i made some quick functions/&qout;game&qout;</p>
+              <IconChevronRightPipe className="text-[#00ff41] "/><p className="flex text-[#00ff41] ">Hi for this week i made some quick functions/ <q>games</q></p>
             </div> 
           <div className="flex  gap-y-10  justify-center flex-col">
           <div className="flex items-center">
-          <IconChevronRightPipe className="text-green-950"/><a href='/Morse'><Button className="bg-[#022208] border-2 border-green-950 text-green-950 border-dashed rounded-none">Morse Code Translator</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><a href='/Morse'><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Morse Code Translator</Button></a>
           </div>
           <div className="flex items-center">
-          <IconChevronRightPipe className="text-green-950"/><a><Button className="bg-[#022208] border-2 border-green-950 text-green-950 border-dashed rounded-none">Message Degradation</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><a><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">Message Degradation</Button></a>
+          </div>
+           <div className="flex items-center">
+          <IconChevronRightPipe className="text-[#00ff41]"/><a href='/About'><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">About</Button></a>
           </div>
            </div>
           </div>
