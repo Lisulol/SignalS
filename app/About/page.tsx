@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { IconChevronRightPipe } from "@tabler/icons-react";
+import Link from "next/link";
 
 export default function Page(){
     return(
@@ -29,7 +30,7 @@ export default function Page(){
             </div>
         <div className="flex items-center">
              <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><a href="/"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]   hover:scale-105 border-dashed rounded-none">Return</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]   hover:scale-105 border-dashed rounded-none">Return</Button></Link>
           </div>
         </div>
         </div>

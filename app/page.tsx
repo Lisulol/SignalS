@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { IconChevronRightPipe } from "@tabler/icons-react";
+import Link from "next/link";
 
 export default function Main() {
 
@@ -26,13 +27,13 @@ export default function Main() {
             </div> 
           <div className="flex  gap-y-10  justify-center flex-col">
           <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><a href='/Morse'><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Morse Code Translator</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/Morse"><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Morse Code Translator</Button></Link>
           </div>
           <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><a><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">Message Degradation</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">Message Degradation</Button></Link>
           </div>
            <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41]"/><a href='/About'><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">About</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41]"/><Link href="/About"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">About</Button></Link>
           </div>
            </div>
           </div>

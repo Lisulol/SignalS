@@ -1,6 +1,7 @@
 'use client'
 import { Button } from "@/components/ui/button";
 import { IconChevronRightPipe } from "@tabler/icons-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Morse(){
@@ -178,7 +179,7 @@ useEffect(()=>{
         <div className="flex items-center left-3 top-2.5 relative">
         <div className="flex items-center">
              <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><a href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></a>
+          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></Link>
           </div>
         </div>
         </div>
