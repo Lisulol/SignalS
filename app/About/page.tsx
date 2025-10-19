@@ -25,9 +25,19 @@ export default function Page(){
                  <IconChevronRight className="text-[#00ff41] "/><p>Something about this project little blog i guess. I know this project doesnt really have sense but i didnt have any good ideas for this theme. So i took 2 lamest ones and put  it together to meet the time qouta.Build for week 7 or 3 depends on what you count for siege</p>
             </div>
             <div className="flex border-t-2 border-b-2 border-[#00ff41]  h-4/6 w-full">
-                <div className="flex relative top-2">
+                <div className="flex relative flex-col top-2">
+                  <div className="flex items-center">
 
                  <IconChevronRight className="text-[#00ff41] "/><p> day 6 of the week: made this page and the morse code translator</p>
+                  </div>
+                  <div className="flex items-center">
+
+                 <IconChevronRight className="text-[#00ff41] "/><p> day 7 of the week: made the game page and the message decoder</p>
+                  </div>
+                  <div className="flex">
+
+                 <IconChevronRight className="text-[#00ff41] "/><p>last update propably nobody reads this. Only made it to kill time ist 9.30PM i need 2h.15 min so no idea what to do  </p>
+                  </div>
                 </div>
             </div>
         <div className="flex items-center">

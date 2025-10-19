@@ -74,6 +74,16 @@ for(const key in morseCode) {
     ReverseMorseCode[value] = key;
   }
 }
+function StopSound() {
+  if (dotref.current) {
+    dotref.current.pause();
+
+  }
+  if (lineref.current) {
+    lineref.current.pause();
+  
+  }
+}
 useEffect(()=>{
 
   dotref.current = new Audio('./sounds/E_morse_code.ogg')
@@ -181,7 +191,7 @@ useEffect(()=>{
         <div className="flex items-center left-3 top-2.5 relative">
         <div className="flex items-center">
              <div className="flex items-center">
-          <IconChevronRight className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></Link>
+          <IconChevronRight className="text-[#00ff41] "/><Link href="/"><Button onClick={StopSound} className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></Link>
           </div>
         </div>
         </div>

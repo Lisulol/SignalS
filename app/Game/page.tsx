@@ -11,6 +11,7 @@ export default function Game(){
     const [randomx, setRandomx] = useState<number | null>(null);
   const [randomy, setRandomy] = useState<number | null>(null);
   const [found, setFound] = useState(false);
+  const [signalStrength, setSignalStrength] = useState(0);
   
   
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function Game(){
     
 
     useEffect(() => {
+         if (randomx === null || randomy === null) return;
         if (playerX === randomx && playerY === randomy) {
             alert('You found the signal transmission! Game Restarting.');
             
@@ -62,6 +64,13 @@ export default function Game(){
             }, 1000);
 
         }
+
+        // calculate the distance to the target idk why i startet commenting now nobody cares
+        const distance = Math.sqrt(
+            Math.pow((randomx - playerX), 2) + Math.pow((randomy - playerY), 2)
+        )
+
+        setSignalStrength(Math.max(0, 100 - Math.floor(distance * 10)));
     }, [playerX, playerY]);
     
     
@@ -84,6 +93,7 @@ export default function Game(){
    }}>
     <div className="flex items-center h-1/6 w-full ">
         <IconChevronRight className="text-[#00ff41] "/><p>Quick game. Find all the signal trassmissions;Movement: Arrows</p>
+        <IconChevronRight className="text-[#00ff41] "/><p>Signal Strength: {signalStrength}%</p>
     </div>
     <div className="flex items-center justify-center w-full h-5/6">
     <div className="grid grid-cols-8 grid-rows-8 bg-black gap-3">
