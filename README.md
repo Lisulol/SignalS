@@ -6,7 +6,7 @@
         - Message Decoder
         - Morse Code translator
         - Signal Catcher (little game)
-## Dependecies
+## Dependecies:
 
 - **[Next.js 15](https://nextjs.org/)**
 - **[Tailwind CSS v4](https://tailwindcss.com/)**

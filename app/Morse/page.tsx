@@ -9,6 +9,7 @@ export default function Morse(){
 
   const dotref = useRef<HTMLAudioElement | null>(null);
   const lineref = useRef<HTMLAudioElement | null>(null);
+   const timeouts = useRef<NodeJS.Timeout[]>([]);
     // Long section with the morse code alphabet aint nobody want to look at tha
   const morseCode : Record<string,string> = {
   A: ".-",
@@ -77,17 +78,23 @@ for(const key in morseCode) {
 function StopSound() {
   if (dotref.current) {
     dotref.current.pause();
-
+    dotref.current.currentTime = 0;
   }
   if (lineref.current) {
     lineref.current.pause();
-  
+    lineref.current.currentTime = 0; 
   }
+  timeouts.current.forEach((t) => clearTimeout(t));
+  timeouts.current = [];
 }
 useEffect(()=>{
 
   dotref.current = new Audio('./sounds/E_morse_code.ogg')
   lineref.current = new Audio('./sounds/T_morse_code.ogg')
+
+  return () => {
+    StopSound();
+  }
 },[])
 
   const [Translation, setTranslation] = useState('');
@@ -120,29 +127,29 @@ useEffect(()=>{
       }).join(' ');
       const morsecodes = morseText.split("")
       let delay = 0;
-      morsecodes.forEach((char) => {
-        if(char === '.'){
-          setTimeout(() => {
+      morseText.split("").forEach((char) => {
+        if (char === '.') {
+          const t = setTimeout(() => {
             if (dotref.current) {
               dotref.current.currentTime = 0;
               dotref.current.play();
             }
           }, delay);
+          timeouts.current.push(t);
           delay += 500;
-        }
-        else if(char === '-'){
-          setTimeout(() => {
+        } else if (char === '-') {
+          const t = setTimeout(() => {
             if (lineref.current) {
               lineref.current.currentTime = 0;
               lineref.current.play();
             }
           }, delay);
+          timeouts.current.push(t);
+          delay += 800;
+        } else if (char === ' ') {
           delay += 800;
         }
-        else if(char === ' '){
-          delay += 800;
-        }
-});
+      });
       setTranslation(morseText);
     }
   }
