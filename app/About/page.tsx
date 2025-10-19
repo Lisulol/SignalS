@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { IconChevronRight } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Page(){
@@ -38,6 +39,14 @@ export default function Page(){
 
                  <IconChevronRight className="text-[#00ff41] "/><p>last update propably nobody reads this. Only made it to kill time ist 9.30PM i need 2h.15 min so no idea what to do  </p>
                   </div>
+                <div className="flex">
+
+                 <IconChevronRight className="text-[#00ff41] "/><p>Handdrawn for the voters: </p>
+                  </div>
+                <div className="flex">
+
+                <IconChevronRight className="text-[#00ff41] "/><Image src ='/assets/ico.png' alt = 'spongebob' width={200} height={200}/>
+                </div>
                 </div>
             </div>
         <div className="flex items-center">
