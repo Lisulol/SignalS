@@ -84,6 +84,8 @@ export default function Main() {
       setResponse(`bash: ${command}: command not found`);
     }
     setInputValue('');
+
+    // love the if stacking *:
 }
 
   useEffect(() => {
