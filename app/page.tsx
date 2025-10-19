@@ -1,6 +1,7 @@
 'use client';
 import { Button } from "@/components/ui/button";
 import { IconChevronRight } from "@tabler/icons-react";
+import { Icon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,6 @@ export default function Main() {
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [response, setResponse] = useState('');
-  const [showCommands, setShowCommands] = useState(false);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -34,6 +34,9 @@ export default function Main() {
     else if (command === 'ls') {
       setResponse('About  Game  Message  Morse');
     }
+    else if (command === 'cd ~' || command === 'cd') {
+      setResponse('Already in home directory');
+    }
     else if (command === 'cd About') {
       window.location.href = '/About';
     }
@@ -48,6 +51,34 @@ export default function Main() {
     }
     else if (command === 'clear') {
       setResponse('');
+    }
+    else if (command.includes('mkdir')) {
+      setResponse(`mkdir: cannot create directory ${command.split(' ')[1]}: Permission denied`);
+    }
+    else if (command.includes('rm -rf')) {
+      setResponse(`rm: cannot remove '${command.split(' ')[2]}': Permission denied`);
+    }
+    else if (command.includes('touch')) {
+      setResponse(`touch: cannot touch '${command.split(' ')[1]}': Read-only file system`);
+    }
+    else if (command.includes('cat')) {
+      setResponse(`cat: ${command.split(' ')[1]}: No such file or directory`);
+    }
+    else if (command === 'neofetch'){
+      setResponse('Ok i dont have that much time')
+    }
+    else if(command === 'whoami'){
+      setResponse('user');
+    }
+    else if(command.includes('pacman')){
+      setResponse(`error: Permission denied`);
+    }
+    else if(command === 'date'){
+      const currentDate = new Date();
+      setResponse(currentDate.toString());
+    }
+    else if(command.includes('sudo')){
+      setResponse('sudo:root privileges needed to run sudo');
     }
     else {
       setResponse(`bash: ${command}: command not found`);
@@ -107,17 +138,16 @@ export default function Main() {
             <IconChevronRight className="text-[#00ff41] "/>[user@archlinux ~]$
             <input 
               onChange={handleInputChange}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyPress}
               value={inputValue}
               className='text-[#00ff41] bg-transparent outline-none ml-2'
               
             />
           </div>
-          {response && (
-            <div className="flex items-center text-[#00ff41] whitespace-pre">
-              <IconChevronRight className="text-[#00ff41] flex-shrink-0"/>{response}
-            </div>
-          )}
+          <div className="flex items-center text-[#00ff41] ">
+            <IconChevronRight className="text-[#00ff41] flex-shrink-0"/>{response}
+          </div>
+          
           </div>
           
       </div>

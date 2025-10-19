@@ -50,11 +50,11 @@ export default function Page(){
                   </div>
                   <div className="flex">
 
-                 <IconChevronRight className="text-[#00ff41] "/><p>$ last update propably nobody reads this. Only made this page to kill time. Its 9.30PM i need 2h.15 min so no idea what to do  </p>
+                 <IconChevronRight className="text-[#00ff41] "/><p>$ last update probably nobody reads this. Only made this page to kill time. Its 9.30PM i need 2h.15 min and no idea what to do  </p>
                   </div>
                 <div className="flex">
 
-                 <IconChevronRight className="text-[#00ff41] "/><p>$ Handdrawn for the voters: </p>
+                 <IconChevronRight className="text-[#00ff41] "/><p>$ Handdrawn spongebob image for the voters: </p>
                   </div>
                 <div className="flex">
 
