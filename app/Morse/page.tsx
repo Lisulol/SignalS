@@ -152,6 +152,7 @@ useEffect(()=>{
       });
       setTranslation(morseText);
     }
+    
   }
   
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
