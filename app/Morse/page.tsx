@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "@/components/ui/button";
-import { IconChevronRightPipe } from "@tabler/icons-react";
+import { IconChevronRight } from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -159,27 +159,29 @@ useEffect(()=>{
           )`
         }}
       ></div>
-        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41] ">
+        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41] " style={{
+     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+   }}>
         <div className="flex flex-col  h-5/6 gap-y-9 left-3 top-2.5 relative">
         <div className='flex items-center'>
-        <IconChevronRightPipe/><p className="text-[#00ff41] ">Input message to be translated</p>
+        <IconChevronRight/><p className="text-[#00ff41] ">Input message to be translated</p>
 
         </div>
         <div className="flex items-center">
-        <IconChevronRightPipe/><input onChange={handleInputChange} value={inputvalue} className='text-[#00ff41]  outline-none'placeholder={'...'}></input>
+        <IconChevronRight/><input onChange={handleInputChange} value={inputvalue} className='text-[#00ff41]  outline-none'placeholder={'...'}></input>
         </div>
         <div className = 'flex items-center'>
-          <IconChevronRightPipe/><p className="text-[#00ff41] ">{Translation}</p>
+          <IconChevronRight/><p className="text-[#00ff41] ">{Translation}</p>
 
         </div>
         <div className="flex items-center">
-           <IconChevronRightPipe/><Button onClick={handleTranslate}className="bg-black border-2 border-[#00ff41]  text-[#00ff41] hover:scale-105 border-dashed rounded-none">Translate</Button>
+           <IconChevronRight/><Button onClick={handleTranslate}className="bg-black border-2 border-[#00ff41]  text-[#00ff41] hover:scale-105 border-dashed rounded-none">Translate</Button>
         </div>
         </div>
         <div className="flex items-center left-3 top-2.5 relative">
         <div className="flex items-center">
              <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></Link>
+          <IconChevronRight className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none">Return</Button></Link>
           </div>
         </div>
         </div>

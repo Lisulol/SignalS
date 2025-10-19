@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { IconChevronRightPipe } from "@tabler/icons-react";
+import { IconChevronRight } from "@tabler/icons-react";
 import Link from "next/link";
 
 export default function Page(){
@@ -18,19 +18,21 @@ export default function Page(){
           )`
         }}
       ></div>
-        <div className="flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41]  rounded-3xl text-[#00ff41]  gap-y-5">
-            <div className="flex justify-center">
-                 <IconChevronRightPipe className="text-[#00ff41] "/><p>Something about this project little blog i guess. I know this project doesnt really have sense but i didnt have any good ideas for this theme. So i took 2 lamest ones and put  it together to meet the time qouta.Build for week 7 or 3 depends on what you count for siege</p>
+        <div className="flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41]  rounded-3xl text-[#00ff41]  gap-y-5" style={{
+     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+   }}>
+            <div className="flex justify-center relative top-2">
+                 <IconChevronRight className="text-[#00ff41] "/><p>Something about this project little blog i guess. I know this project doesnt really have sense but i didnt have any good ideas for this theme. So i took 2 lamest ones and put  it together to meet the time qouta.Build for week 7 or 3 depends on what you count for siege</p>
             </div>
             <div className="flex border-t-2 border-b-2 border-[#00ff41]  h-4/6 w-full">
-                <div className="flex">
+                <div className="flex relative top-2">
 
-                 <IconChevronRightPipe className="text-[#00ff41] "/><p> day 6 of the week: made this page and the morse code translator</p>
+                 <IconChevronRight className="text-[#00ff41] "/><p> day 6 of the week: made this page and the morse code translator</p>
                 </div>
             </div>
         <div className="flex items-center">
              <div className="flex items-center">
-          <IconChevronRightPipe className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]   hover:scale-105 border-dashed rounded-none">Return</Button></Link>
+          <IconChevronRight className="text-[#00ff41] "/><Link href="/"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]   hover:scale-105 border-dashed rounded-none">Return</Button></Link>
           </div>
         </div>
         </div>
