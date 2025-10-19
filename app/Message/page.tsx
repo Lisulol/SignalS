@@ -19,11 +19,11 @@ export default function Message(){
 
 
   const stations = [
-    {frequency: 90, name:'Station 1', messege:'You are receving form Station 1'},
-    {frequency: 25, name:'Station 2' , messege:'You are receving form Station 2'},
-    {frequency: 10, name:'Station 3' , messege:'You are receving form Station 3'},
-    {frequency: 45, name:'Station 5' , messege:'You are receving form Station 5'},
-    {frequency: 80, name:'Station 4' , messege:'You are receving form Station 4'}
+    {frequency: 90, name:'Station 1', messege:'You are receving from Station 1'},
+    {frequency: 25, name:'Station 2' , messege:'You are receving from Station 2'},
+    {frequency: 10, name:'Station 3' , messege:'You are receving from Station 3'},
+    {frequency: 45, name:'Station 5' , messege:'You are receving from Station 5'},
+    {frequency: 80, name:'Station 4' , messege:'You are receving from Station 4'}
 
   ]
   const matchedStation = stations.find(station => 

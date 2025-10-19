@@ -32,6 +32,9 @@ export default function Main() {
           <IconChevronRight className="text-[#00ff41] "/><Link href="/Morse"><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Morse Code Translator</Button></Link>
           </div>
           <div className="flex items-center">
+          <IconChevronRight className="text-[#00ff41] "/><Link href="/Game"><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Game</Button></Link>
+          </div>
+          <div className="flex items-center">
           <IconChevronRight className="text-[#00ff41] "/><Link href="/Message"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">Message Decoder</Button></Link>
           </div>
            <div className="flex items-center">
