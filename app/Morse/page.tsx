@@ -5,11 +5,18 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Morse(){
-
-
+  const [isVisible, setIsVisible] = useState(false);
   const dotref = useRef<HTMLAudioElement | null>(null);
   const lineref = useRef<HTMLAudioElement | null>(null);
-   const timeouts = useRef<NodeJS.Timeout[]>([]);
+  const timeouts = useRef<NodeJS.Timeout[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
     // Long section with the morse code alphabet aint nobody want to look at tha
   const morseCode : Record<string,string> = {
   A: ".-",
@@ -177,19 +184,21 @@ useEffect(()=>{
           )`
         }}
       ></div>
-        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41] " style={{
-     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
-   }}>
+        <div className={`flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl text-[#00ff41] transition-all duration-200 transform ${
+            isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+        }`} style={{
+            boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+        }}>
         <div className="flex flex-col  h-5/6 gap-y-9 left-3 top-2.5 relative">
         <div className='flex items-center'>
-        <IconChevronRight/><p className="text-[#00ff41] ">Input message to be translated</p>
+        <IconChevronRight/><p className="text-[#00ff41] ">[user@archlinux ~]$ Input a message to translate</p>
 
         </div>
         <div className="flex items-center">
-        <IconChevronRight/><input onChange={handleInputChange} value={inputvalue} className='text-[#00ff41]  outline-none'placeholder={'...'}></input>
+        <IconChevronRight/>$ <input onChange={handleInputChange} value={inputvalue} className='text-[#00ff41]  outline-none'placeholder={'...'}></input>
         </div>
         <div className = 'flex items-center'>
-          <IconChevronRight/><p className="text-[#00ff41] ">{Translation}</p>
+          <IconChevronRight/><p className="text-[#00ff41] ">Translation:{Translation}</p>
 
         </div>
         <div className="flex items-center">

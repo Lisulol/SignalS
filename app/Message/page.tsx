@@ -11,11 +11,19 @@ type Station = {
   messege: string;
 }
 export default function Message(){
-
+  const [isVisible, setIsVisible] = useState(false);
   const [freq,setFreq] = useState(0)
   const [strength,setStrength] = useState(0)
   const [mes, setMes] = useState('')
   const [foundstat, setFoundstat] = useState<Station | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
 
   const stations = [
@@ -75,19 +83,21 @@ export default function Message(){
           )`
         }}
       ></div>
-        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41]  " style={{
-     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
-   }}>
+        <div className={`flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl text-[#00ff41] transition-all duration-200 transform ${
+            isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+        }`} style={{
+            boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+        }}>
           
           <div className="flex items-center h-1/6 w-full ">
-          <IconChevronRight/><p>Message Decoder</p>
+          <IconChevronRight/><p>[user@archlinux ~]$ Message Decoder</p>
           </div>
         <div className="flex h-4/6 w-full flex-col">
             <div className="flex">
-              <IconChevronRight/><p>Freqency: {freq}MHz</p>
+              <IconChevronRight/><p>$ Freqency: {freq}MHz</p>
             </div>
             <div className="flex">
-              <IconChevronRight/><p>Signal strength: {strength}%</p>
+              <IconChevronRight/><p>$ Signal strength: {strength}%</p>
             </div>
         <div className="flex items-center justify-center w-11/12">
             <IconChevronRight/><Slider onValueChange={(freq) => {setFreq(freq[0])}} max={100} step={1} />

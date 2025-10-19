@@ -6,13 +6,21 @@ import { Progress } from "@/components/ui/progress"
 import { KeyboardEvent, useEffect, useState } from "react";
 
 export default function Game(){
-    
+    const [isVisible, setIsVisible] = useState(false);
     const [playerX, setPlayerX] =  useState(0);
     const [playerY, setPlayerY] =  useState(0);
     const [randomx, setRandomx] = useState<number | null>(null);
-  const [randomy, setRandomy] = useState<number | null>(null);
-  const [found, setFound] = useState(false);
-  const [signalStrength, setSignalStrength] = useState(0);
+    const [randomy, setRandomy] = useState<number | null>(null);
+    const [found, setFound] = useState(false);
+    const [signalStrength, setSignalStrength] = useState(0);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 100);
+
+        return () => clearTimeout(timer);
+    }, []);
   
   
   
@@ -49,7 +57,13 @@ export default function Game(){
         };
     }, []);    
     
-    
+    function handleReset( ){
+                setPlayerX(0);
+                setPlayerY(0);
+                setRandomx(Math.floor(Math.random() * 8));
+                setRandomy(Math.floor(Math.random() * 8));
+                setFound(false);
+    }
     
 
     useEffect(() => {
@@ -58,14 +72,7 @@ export default function Game(){
            
             
             setFound(true);
-            setTimeout(() => {
-                setPlayerX(0);
-                setPlayerY(0);
-                setRandomx(Math.floor(Math.random() * 8));
-                setRandomy(Math.floor(Math.random() * 8));
-                setFound(false); 
-            }, 2000);
-
+            
         }
 
         // calculate the distance to the target idk why i startet commenting now nobody cares
@@ -91,22 +98,24 @@ export default function Game(){
           )`
         }}
       ></div>
-        <div className="flex flex-col h-9/12 w-9/12 bg-black  border-8 border-[#00ff41]  rounded-3xl text-[#00ff41]  " style={{
-     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
-   }}>
+        <div className={`flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl text-[#00ff41] transition-all duration-200 transform ${
+            isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+        }`} style={{
+            boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+        }}>
     <div className="flex flex-col h-1/6 w-full gap-y-3 relative top-2.5 left-3">
     <div className="flex items-center">
-        <IconChevronRight className="text-[#00ff41] "/><p>Quick game. Find all the signal trassmissions; Movement: Arrows</p>
+        <IconChevronRight className="text-[#00ff41] "/><p>[user@archlinux ~]$ Quick game. Find all the signal trassmissions; Movement: Arrows</p>
     </div>
     <div className="flex items-center">
-        <IconChevronRight className="text-[#00ff41] "/><p>Signal Strength: {signalStrength}%</p>
+        <IconChevronRight className="text-[#00ff41] "/><p>$ Signal Strength: {signalStrength}%</p>
     </div>
     <div className="flex items-center w-2/3">
         <IconChevronRight className="text-[#00ff41] "/><Progress value = {signalStrength}/>
     </div>
     </div>
     <div className="flex items-center justify-center w-full h-5/6">
-    <div className="grid grid-cols-8 grid-rows-8 bg-black gap-3">
+    <div className="grid grid-cols-8 grid-rows-8 bg-black gap-3 border-3 border-[#00ff41] p-5" >
         {[...Array(64)].map((_, index) => {
             const x = index % 8;
             const y = Math.floor(index / 8);
@@ -127,7 +136,8 @@ export default function Game(){
                 <div className="pointer-events-auto flex items-center justify-center bg-black border-4 border-[#00ff41] rounded-xl p-6 max-w-md w-full mx-4">
                     <p className="text-[#00ff41] text-4xl md:text-6xl animate-pulse text-center">
                         Signal Found! <br/>
-                        Game resetting.
+                        
+                        <Button className="bg-black border-2 border-[#00ff41] hover:scale-105 text-[#00ff41]  border-dashed rounded-none" onClick={handleReset}>Restart</Button>
                     </p>
                 </div>
             )}

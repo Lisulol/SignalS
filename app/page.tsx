@@ -1,8 +1,67 @@
+'use client';
 import { Button } from "@/components/ui/button";
 import { IconChevronRight } from "@tabler/icons-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Main() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [response, setResponse] = useState('');
+  const [showCommands, setShowCommands] = useState(false);
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleCommand();
+    }
+  };
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
+  function handleCommand() {
+    
+  
+  
+  
+  
+    const command = inputValue.trim();
+    
+    if (command === 'pwd') {
+      setResponse('/home/user');
+    }
+    else if (command === 'ls') {
+      setResponse('About  Game  Message  Morse');
+    }
+    else if (command === 'cd About') {
+      window.location.href = '/About';
+    }
+    else if (command === 'cd Game') {
+      window.location.href = '/Game';
+    }
+    else if (command === 'cd Message') {
+      window.location.href = '/Message';
+    }
+    else if (command === 'cd Morse') {
+      window.location.href = '/Morse';
+    }
+    else if (command === 'clear') {
+      setResponse('');
+    }
+    else {
+      setResponse(`bash: ${command}: command not found`);
+    }
+    setInputValue('');
+}
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
 
   return(
@@ -14,20 +73,24 @@ export default function Main() {
             0deg,
             rgba(0, 0, 0, 0.4) 0px,
             rgba(0, 0, 0, 0.2) 2px,
-            transparent 2px,
+            transparent 1px,
             transparent 4px
           )`
         }}
       ></div>
-      <div className="flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl gap-y-50" style={{
-     boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
-   }}>
+      <div 
+        className={`flex flex-col h-9/12 w-9/12 bg-black border-8 border-[#00ff41] rounded-3xl gap-y-50 transition-all duration-200 transform${
+          isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+        }`} 
+        style={{
+          boxShadow: '0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.1)'
+        }}>
            <div className="flex left-3 top-2.5 relative flex-col gap-y-50">
 
             <div className="flex items-center">
-              <IconChevronRight className="text-[#00ff41] "/><p className="flex text-[#00ff41] ">Hi for this week i made some quick functions/ <q>games</q></p>
+              <IconChevronRight className="text-[#00ff41] "/><p className="flex text-[#00ff41] ">[user@archlinux ~]$ Hi for this week i made some quick functions/ <q>games</q></p>
             </div> 
-          <div className="flex  gap-y-10  justify-center flex-col">
+          <div className="flex  gap-y-20  justify-center flex-col">
           <div className="flex items-center">
           <IconChevronRight className="text-[#00ff41] "/><Link href="/Morse"><Button className="bg-black border-2 border-[#00ff41] text-[#00ff41]  border-dashed rounded-none hover:scale-105">Morse Code Translator</Button></Link>
           </div>
@@ -40,11 +103,25 @@ export default function Main() {
            <div className="flex items-center">
           <IconChevronRight className="text-[#00ff41]"/><Link href="/About"><Button className="bg-black border-2 border-[#00ff41]  text-[#00ff41]  border-dashed rounded-none hover:scale-105">About</Button></Link>
           </div>
-           </div>
+          <div className="flex items-center text-[#00ff41] ">
+            <IconChevronRight className="text-[#00ff41] "/>[user@archlinux ~]$
+            <input 
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
+              value={inputValue}
+              className='text-[#00ff41] bg-transparent outline-none ml-2'
+              
+            />
+          </div>
+          {response && (
+            <div className="flex items-center text-[#00ff41] whitespace-pre">
+              <IconChevronRight className="text-[#00ff41] flex-shrink-0"/>{response}
+            </div>
+          )}
           </div>
           
       </div>
-      
+      </div>
 
       
     </div>

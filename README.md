@@ -3,9 +3,9 @@
 ## Description:
 
     The Project features 3 "minigames"
-        - Message Decoder
-        - Morse Code translator
-        - Signal Catcher (little game)
+    - Message Decoder. Use the frequency slider to find hidden messages
+    - Morse Code translator. Type any text and it will translate it
+    - Signal Catcher (little game). Movement: Arrows
 ## Dependecies:
 
 - **[Next.js 15](https://nextjs.org/)**
